@@ -24,3 +24,31 @@ $icon-font-path: 'bootstrap/'; // FOR THE GLYFICONS TO SHOW UP
 .navbar-brand {
      font-weight: bold;
 }
+
+
+/******* RECIPES LISTING ********/
+
+recipes {
+  margin: 0 auto;
+}
+
+.box {
+	float: left;
+  margin: 5px;
+  width: 214px;
+  text-align: center;
+}
+
+.box img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+  margin-top: 15px;
+  background-color: grey; // TIJDELIJK
+}
+
+/***** INDIVIDUAL RECIPE ******/
+
+

@@ -1,0 +1,17 @@
+<div class="jumbotron center">
+	<h1 class="recipe-title"><%= @recipe.name %></h1>
+		
+	<blockquote>
+		<%= @recipe.summary %><br>
+		<span class="quiet"><small><%= time_ago_in_words(@recipe.created_at) %> ago</small></span>
+	</blockquote>
+	
+	<p><%= @recipe.description %></p>
+	
+	<hr>
+	
+	<h4>By: <%= @recipe.chef.chefname %></h4>
+	<br>
+	<h5><%= link_to 'Back', recipes_path, class: "btn btn-default btn-lg" %></h5>
+ 
+</div>

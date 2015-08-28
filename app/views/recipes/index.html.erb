@@ -1,0 +1,24 @@
+<%= link_to "New Recipe", new_recipe_path, class: "btn btn-default btn-lg" %>
+
+<br>
+
+<h2>All the recipes:</h2>
+
+<hr>
+
+
+<div id="recipes" class="transitions-enabled clear">
+	<% @recipes.each do |recipe| %>
+	<div class="box panel panel-default">
+		
+		<% my_image = gravatar_for(recipe.chef, { size: 100 }) %>
+	  <%= link_to my_image, recipe_path(recipe)  %>
+	  
+	  <div class="panel-body">
+		  <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
+			<p><%= recipe.summary %></p>
+			<span class="quiet"><small><%= time_ago_in_words(recipe.created_at) %> ago</small></span>
+	  </div>
+	</div>
+	<% end %>	
+</div><!-- end #recipes -->
