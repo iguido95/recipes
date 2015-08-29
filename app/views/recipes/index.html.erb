@@ -18,6 +18,8 @@
 		  <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
 			<p><%= recipe.summary %></p>
 			<span class="quiet"><small><%= time_ago_in_words(recipe.created_at) %> ago</small></span>
+			
+			<%= image_tag(recipe.picture.url, size: "250x150", class: "recipe-picture") if recipe.picture? %>
 	  </div>
 	</div>
 	<% end %>	

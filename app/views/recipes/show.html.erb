@@ -6,6 +6,10 @@
 		<span class="quiet"><small><%= time_ago_in_words(@recipe.created_at) %> ago</small></span>
 	</blockquote>
 	
+	<div class="show-recipe-picture">
+		<%= image_tag(@recipe.picture.url, class: "gravatar") if @recipe.picture? %>
+	</div>
+	
 	<p><%= simple_format(@recipe.description) %></p> <!-- simple_format() om de stijl van ingevoerde tekst te handhaven -->
 	
 	<hr>
