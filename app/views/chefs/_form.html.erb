@@ -1,0 +1,15 @@
+<%= render 'shared/errors', obj: @chef %>
+
+<%= form_for(@chef) do |f| %>
+	<%= f.label :chefname %>
+	<%= f.text_field :chefname %><br>
+	
+	<%= f.label :email %>
+	<%= f.email_field :email %><br>
+	
+	<%= f.label :password %>
+	<%= f.password_field :password %><br>
+
+	
+	<%= f.submit 'Register or edit', class: "btn btn-success" %>
+<% end %>	
