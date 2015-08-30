@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController 
 	
 	def index
-		@recipes = Recipe.all.order("created_at DESC")
+		@recipes = Recipe.paginate(page: params[:page], :per_page => 3).order('created_at DESC')
 	end	
 	
 	def show
@@ -37,6 +37,17 @@ class RecipesController < ApplicationController
 		else
 			render :edit
 		end				
+	end	
+	
+	def like
+		@recipe = Recipe.find(params[:id])
+		@like = Like.create(like: params[:like], chef: Chef.last, recipe: @recipe)
+		if @like.valid?
+			flash[:success] = "Your like/dislike was successful"
+		else 
+			flash[:danger] = "You can only like once!"
+		end	
+		redirect_to :back
 	end	
 	
 	

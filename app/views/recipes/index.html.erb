@@ -6,6 +6,7 @@
 
 <hr>
 
+<%= will_paginate @recipes %>
 
 <div id="recipes" class="transitions-enabled clear">
 	<% @recipes.each do |recipe| %>
@@ -15,7 +16,7 @@
 	  <%= link_to my_image, recipe_path(recipe)  %>
 	  
 	  <div class="panel-body">
-		  <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
+		  <h4><%= link_to recipe.name, recipe_path(recipe) %><small class="pull-right"><%= recipe.net_likes %></small></h4>
 			<p><%= recipe.summary %></p>
 			<span class="quiet"><small><%= time_ago_in_words(recipe.created_at) %> ago</small></span>
 			
@@ -24,3 +25,5 @@
 	</div>
 	<% end %>	
 </div><!-- end #recipes -->
+<div class="clear"></div>
+	<%= will_paginate @recipes %>
