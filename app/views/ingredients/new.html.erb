@@ -1,0 +1,13 @@
+<h1>New Ingredient</h1>
+
+<%= render 'shared/errors', obj: @ingredient %>
+<div class="row">	
+	<div class="well col-md-8 col-md-offset-2">
+		<%= form_for(@ingredient) do |f| %>
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+
+			<%= f.submit('Create Ingredient', class: "btn btn-success") %>
+		<% end %>
+	</div>
+</div>

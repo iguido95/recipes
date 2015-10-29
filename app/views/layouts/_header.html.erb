@@ -16,8 +16,31 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
 	      
-        <li><%= link_to "Home", "#" %></li>
+        <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Recipes", recipes_path %></li>
+
+        <li class="dropdown">
+          <%= link_to "#", class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-haspopup" => "true"  do %>
+            Styles<span class="caret"></span> 
+          <% end %>
+            <ul class="dropdown-menu">
+            <% Style.all.each do |style| %>
+              <li><%= link_to style.name, style_path(style) %></li>
+            <% end %>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+          <%= link_to "#", class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-haspopup" => "true"  do %>
+            Ingredients<span class="caret"></span> 
+          <% end %>
+            <ul class="dropdown-menu">
+            <% Ingredient.all.each do |ing| %>
+              <li><%= link_to ing.name, ingredient_path(ing) %></li>
+            <% end %>
+            </ul>
+        </li>        
+
         <% if logged_in? %>
           <li class="dropdown">
             <%= link_to "#", class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-haspopup" => "true"  do %>

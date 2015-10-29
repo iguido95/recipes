@@ -1,18 +1,5 @@
-
-<ul class="nav nav-tabs">
-	<li class="active">
-		<%= link_to 'Recipes', recipes_path %>
-	</li>
-	<li>
-		<%= link_to 'Chefs', chefs_path %>
-	</li>
-</ul>
-
-<h2>All the recipes:</h2>
+<h1>Recipes with style '<%= @style.name %>'</h1>
 <br>
-<% if logged_in? %>
-	<%= link_to "New Recipe", new_recipe_path, class: "btn btn-default btn-lg" %>
-<% end %>
 <hr>
 
 <%= will_paginate @recipes %>

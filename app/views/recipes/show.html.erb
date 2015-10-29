@@ -11,7 +11,27 @@
 	</div>
 	
 	<p><%= simple_format(@recipe.description) %></p> <!-- simple_format() om de stijl van ingevoerde tekst te handhaven -->
-	
+	<br>
+	<p>
+		<small>Styles:</small>
+		<div class="btn-group" role="group" aria-label="...">
+			<% @recipe.styles.each do |style| %>
+			<%= link_to style.name, style_path(style), { class: "btn btn-default", role: "button"} %>
+	  	<% end %>
+		</div>
+	</p>
+	<br>
+	<p>
+		<small>Ingredients:</small>
+		<div class="btn-group" role="group" aria-label="...">
+			<% @recipe.ingredients.each do |ing| %>
+			<%= link_to ing.name, ingredient_path(ing), { class: "btn btn-default", role: "button" } %>
+	  	<% end %>
+		</div>
+	</p>
+
+	<br>
+
 	<div class="">
 		<%= link_to like_recipe_path(like: true), method: :post do %>
 			<i class="glyphicon glyphicon-thumbs-up"></i>
