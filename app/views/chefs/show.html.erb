@@ -1,0 +1,34 @@
+<h1>Chef: <%= @chef.chefname %></h1>
+
+<%= gravatar_for(@chef) %>
+
+<p>
+Email: <%= @chef.email %> 
+</p>
+
+<p>
+	<br><br>
+<h3>Recipes: (<%= @chef.recipes.count %>)</h3>
+<br>
+
+<%= will_paginate @chef_recipes %>
+
+
+<div id="recipes" class="transitions-enabled clear">
+	<% @chef_recipes.each do |recipe| %>
+	<div class="box panel panel-default">
+		
+		<%= image_tag(recipe.picture.url, size: "250x150", class: "recipe-picture") if recipe.picture? %>
+	  
+	  <div class="panel-body">
+		  <h4><%= link_to recipe.name, recipe_path(recipe) %><small class="pull-right"><%= recipe.net_likes %></small></h4>
+			<p><%= recipe.summary %></p>
+			<span class="quiet"><small><%= time_ago_in_words(recipe.created_at) %> ago</small></span>
+	  </div>
+	</div>
+	<% end %>	
+</div><!-- end #recipes -->
+<div class="clear"></div>
+
+
+</p>

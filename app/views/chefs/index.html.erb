@@ -1,0 +1,24 @@
+<h2>Chefs:</h2>
+
+<hr>
+
+
+<%= will_paginate @chefs %>
+<div id="recipes" class="transitions-enabled clear">
+	<% @chefs.each do |chef| %>
+	<div class="box panel panel-default">
+		
+		<% my_image = gravatar_for(chef, { size: 100 }) %>
+	  <%= link_to my_image, chef_path(chef)  %>
+	  
+	  <div class="panel-body">
+		  <h4><%= link_to chef.chefname, chef_path(chef) %></h4>
+			<p><%= chef.email %></p>
+			<span class="quiet"><small><%= time_ago_in_words(chef.created_at) %> ago registered</small></span>
+	  </div>
+	</div>
+	<% end %>	
+</div><!-- end #recipes -->
+<div class="clear"></div>
+<%= will_paginate @chefs %>
+
