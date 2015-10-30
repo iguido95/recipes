@@ -15,7 +15,6 @@ class RecipesController < ApplicationController
 	end	
 	
 	def create 
-		binding.pry
 		@recipe = Recipe.new(recipe_params)
 		@recipe.chef = current_user
 		if @recipe.save
@@ -40,6 +39,16 @@ class RecipesController < ApplicationController
 			render :edit
 		end				
 	end	
+
+	def destroy
+		if current_user.admin?
+			Recipe.find(params[:id]).destroy
+			flash[:success] = "Recipe was deleted."
+		else
+			flash[:danger] = "Only admins can delete recipes."
+		end
+		redirect_to recipes_path
+	end	
 	
 	def like
 		@like = Like.create(like: params[:like], chef: current_user, recipe: @recipe)
@@ -62,7 +71,7 @@ class RecipesController < ApplicationController
 		end
 		
 		def require_same_user
-			unless logged_in? && @recipe.chef == current_user
+			unless logged_in? && (@recipe.chef == current_user || current_user.admin)
 				flash[:danger] = "You can only edit your own recipes"
 				redirect_to root_path
 			end	
