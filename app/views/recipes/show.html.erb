@@ -12,6 +12,7 @@
 	
 	<p><%= simple_format(@recipe.description) %></p> <!-- simple_format() om de stijl van ingevoerde tekst te handhaven -->
 	<br>
+	<% if @recipe.styles.any? %>
 	<p>
 		<small>Styles:</small>
 		<div class="btn-group" role="group" aria-label="...">
@@ -19,8 +20,10 @@
 			<%= link_to style.name, style_path(style), { class: "btn btn-default", role: "button"} %>
 	  	<% end %>
 		</div>
-	</p>
-	<br>
+	</p><br>
+	<% end %>
+
+	<% if @recipe.ingredients.any? %>
 	<p>
 		<small>Ingredients:</small>
 		<div class="btn-group" role="group" aria-label="...">
@@ -28,9 +31,8 @@
 			<%= link_to ing.name, ingredient_path(ing), { class: "btn btn-default", role: "button" } %>
 	  	<% end %>
 		</div>
-	</p>
-
-	<br>
+	</p><br>
+	<% end %>
 
 	<div class="">
 		<%= link_to like_recipe_path(like: true), method: :post do %>
