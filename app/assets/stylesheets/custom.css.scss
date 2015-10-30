@@ -1,6 +1,6 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+@import url('//fonts.googleapis.com/css?family=Lato:400,700');
 
 $body-bg:							#ecf0f1;
 $font-family-sans-serif:		'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
