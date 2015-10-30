@@ -27,6 +27,10 @@
             <% Style.all.each do |style| %>
               <li><%= link_to style.name, style_path(style) %></li>
             <% end %>
+            <% if logged_in? %>
+              <li class="divider" role="seperator"></li>
+              <li><%= link_to 'New Style', new_style_path %></li>
+            <% end %>
             </ul>
         </li>
 
@@ -37,6 +41,10 @@
             <ul class="dropdown-menu">
             <% Ingredient.all.each do |ing| %>
               <li><%= link_to ing.name, ingredient_path(ing) %></li>
+            <% end %>
+            <% if logged_in? %>
+              <li class="divider" role="seperator"></li>
+              <li><%= link_to 'New Ingredient', new_ingredient_path %></li>
             <% end %>
             </ul>
         </li>        
